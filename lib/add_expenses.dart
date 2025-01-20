@@ -3,6 +3,8 @@ import 'package:dongemon/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'ThousandSeparator.dart';
+
 class add_expenses extends StatefulWidget {
   const add_expenses({super.key});
 
@@ -67,7 +69,10 @@ class _add_expensesState extends State<add_expenses> {
                     child: TextField(
                       textAlign: TextAlign.center,
                       keyboardType: TextInputType.number,
-                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly, // فقط ارقام مجاز هستند
+                        ThousandsSeparatorInputFormatter(),
+                      ],
                       decoration: InputDecoration(
                         labelText: "مبلغ",
                         border: OutlineInputBorder(

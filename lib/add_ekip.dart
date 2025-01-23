@@ -22,7 +22,7 @@ class _AddEkipState extends State<AddEkip> {
         create: (context) => UserBloc(),
         child: AddEkipPage(),
       ),
-    );a
+    );
   }
 }
 

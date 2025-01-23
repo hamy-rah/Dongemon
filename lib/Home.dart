@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'add_ekip.dart';
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -35,7 +35,15 @@ class _HomeState extends State<Home> {
                         size: 30,
                       ),
                       TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            setState(() {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) =>
+                                      const AddEkip()
+                                  ));
+                            });
+                          },
                           child: const Text(
                             "ساخت اکیپ جدید",
                             style: TextStyle(fontSize: 20),

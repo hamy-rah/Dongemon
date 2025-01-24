@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'add_ekip.dart';
+import 'hesab_page.dart';
 import 'user_bloc.dart';
 import 'user_event.dart';
 import 'user_state.dart';
@@ -71,7 +72,11 @@ class _HomeState extends State<Home> {
                       itemBuilder: (context, index) {
                         final user = state.users[index];
                         return InkWell(
-                          onTap: (){},
+                          onTap: (){
+                            setState(() {
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=> const HesabPage()));
+                            });
+                          },
                           child: Card(
                             margin: const EdgeInsets.symmetric(
                                 horizontal: 50, vertical: 8),

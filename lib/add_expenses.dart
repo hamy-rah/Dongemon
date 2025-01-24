@@ -2,8 +2,10 @@ import 'package:dongemon/choosing_partners.dart';
 import 'package:dongemon/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'ThousandSeparator.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'user_bloc.dart';
+import 'user_state.dart';
 
 class add_expenses extends StatefulWidget {
   const add_expenses({super.key});
@@ -166,31 +168,29 @@ class dropdown_choise extends StatefulWidget {
 }
 
 class _dropdown_choiseState extends State<dropdown_choise> {
-  // مقدار انتخاب‌شده
   String? selectedValue;
-
-  // لیست گزینه‌ها
-  final List<String> dropdownItems = ['اکیپ ۱', 'اکیپ ۲', 'اکیپ ۳', 'اکیپ ۴'];
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      hint: const Center(child: Text('یک اکیپ را انتخاب کنید')),
-      // متن پیش‌فرض
-      value: selectedValue,
-      // مقدار انتخاب‌شده
-      items: dropdownItems.map((String item) {
-        return DropdownMenuItem<String>(
-          value: item,
-          child: Center(child: Text(item)),
+    return BlocBuilder<UserBloc, UserState>(
+      builder: (context, state) {
+        return DropdownButton<String>(
+          hint: const Center(child: Text('یک اکیپ را انتخاب کنید')),
+          value: selectedValue,
+          items: state.users.map((user) {
+            return DropdownMenuItem<String>(
+              value: user.name,
+              child: Center(child: Text(user.name)),
+            );
+          }).toList(),
+          onChanged: (String? newValue) {
+            setState(() {
+              selectedValue = newValue;
+            });
+          },
+          isExpanded: true,
         );
-      }).toList(),
-      onChanged: (String? newValue) {
-        setState(() {
-          selectedValue = newValue; // به‌روزرسانی مقدار انتخاب‌شده
-        });
       },
-      isExpanded: true, // کشیدن باکس به عرض کامل (اختیاری)
     );
   }
 }

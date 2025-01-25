@@ -2,7 +2,6 @@ import 'package:dongemon/homepage.dart';
 import 'package:dongemon/user_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'bloc/debt_bloc.dart';
 import 'bloc/expense_bloc.dart';
 void main() {
@@ -17,7 +16,6 @@ void main() {
           debugShowCheckedModeBanner: false,
           home: HomePage(),
         ),
-
       ),
     );
 }
